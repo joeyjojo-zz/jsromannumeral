@@ -11,12 +11,12 @@ describe("The RomanNumeralGenerator must generate the roman numeral equivalent o
 
     it("should throw an exception if the integer provided is less than 1", function(){
         var rmngen = new RomanNumeralGenerator();
-        expect(rmngen.generate(0)).toThrow();
+        expect(function(){rmngen.generate(0)}).toThrow(new Error('Number is too small'));
     });
 
     it("should throw an exception if the integer provided is greater than 3999", function(){
         var rmngen = new RomanNumeralGenerator();
-        expect(rmngen.generate(4000)).toThrow();
+        expect(function(){rmngen.generate(4000)}).toThrow(new Error('Number is too large'));
     });
 
     it("should throw an exception if not provided an integer", function(){
@@ -24,4 +24,5 @@ describe("The RomanNumeralGenerator must generate the roman numeral equivalent o
         expect(rmngen.generate("1")).toThrow();
         expect(rmngen.generate(1.0)).toThrow();
     });
+
 });
